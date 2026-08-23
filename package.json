@@ -1,0 +1,14 @@
+{
+  "name": "flixit-monorepo",
+  "version": "1.0.0",
+  "description": "FLIXIT Video Streaming Platform Unified Runner",
+  "scripts": {
+    "start": "concurrently \"npm --prefix backend start\" \"npm --prefix frontend run dev\"",
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "build": "npm --prefix frontend run build",
+    "test": "npm --prefix backend test && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,16 @@
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.env
+.env.*
+!.env.example
+*.log
+.vscode/
+.DS_Store
+uploads/raw/
+frontend/public/videos/comedy1.mp4
+frontend/public/videos/devotional1.mp4
+frontend/public/videos/devotional2.mp4
+frontend/public/videos/nature1.mp4
+frontend/public/videos/nature2.mp4
