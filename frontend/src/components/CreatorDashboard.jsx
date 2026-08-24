@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Upload, Film, BarChart3, Settings, Edit3, Trash2, Plus, DollarSign, Eye, Clock, Sparkles, CheckCircle2, Tag } from 'lucide-react';
-import { api } from '../services/api';
+import { api, resolveMediaUrl } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 
 export default function CreatorDashboard({ onSelectVideo, initialTab = 'analytics' }) {
@@ -342,7 +342,7 @@ export default function CreatorDashboard({ onSelectVideo, initialTab = 'analytic
               <div key={vid.id} className="glass-panel p-4 flex flex-col justify-between group">
                 <div>
                   <div className="relative mb-3 rounded-2xl overflow-hidden aspect-video">
-                    <video src={vid.raw_url || vid.hls_url} muted preload="metadata" aria-label={vid.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <video src={resolveMediaUrl(vid.raw_url || vid.hls_url)} muted preload="metadata" aria-label={vid.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     <span className="absolute top-2 right-2 badge-hls">1080P HLS</span>
                   </div>
                   <div className="flex items-center gap-2 mb-1">

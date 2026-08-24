@@ -1,4 +1,10 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const API_ORIGIN = API_BASE_URL.replace(/\/api\/?$/, '');
+
+export const resolveMediaUrl = (url) => {
+  if (!url || url.startsWith('http')) return url;
+  return `${API_ORIGIN}${url.startsWith('/') ? url : `/${url}`}`;
+};
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('flixit_token');

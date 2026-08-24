@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Download, WifiOff, CheckCircle2, Play, HardDrive, Trash2 } from 'lucide-react';
+import { resolveMediaUrl } from '../services/api';
 
 export default function OfflineDownloadsView({ videos, onSelectVideo }) {
   const [downloadedVideos, setDownloadedVideos] = useState([
@@ -39,7 +40,7 @@ export default function OfflineDownloadsView({ videos, onSelectVideo }) {
           <div key={vid.id} className="glass-panel p-4 flex flex-col justify-between group">
             <div>
               <div className="relative mb-3 rounded-2xl overflow-hidden aspect-video">
-                <video src={vid.raw_url || vid.hls_url} muted preload="metadata" aria-label={vid.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <video src={resolveMediaUrl(vid.raw_url || vid.hls_url)} muted preload="metadata" aria-label={vid.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 <span className="absolute top-2 right-2 px-2.5 py-0.5 rounded-md bg-emerald-500 text-black text-[10px] font-extrabold flex items-center gap-1">
                   <CheckCircle2 className="w-3 h-3" /> Offline Ready
                 </span>

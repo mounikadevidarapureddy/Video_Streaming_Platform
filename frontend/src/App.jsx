@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Sparkles, Flame, Crown, Users, Lock, ChevronRight, Download, HeartHandshake } from 'lucide-react';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { api } from './services/api';
+import { api, resolveMediaUrl } from './services/api';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import HlsPlayer from './components/HlsPlayer';
@@ -307,7 +307,7 @@ function MainAppContent() {
                       >
                         <div className="relative aspect-video rounded-xl overflow-hidden mb-3">
                           <video
-                            src={vid.raw_url || vid.hls_url}
+                            src={resolveMediaUrl(vid.raw_url || vid.hls_url)}
                             muted
                             preload="metadata"
                             aria-label={vid.title}
@@ -351,7 +351,7 @@ function MainAppContent() {
                     >
                       <div className="relative aspect-video rounded-xl overflow-hidden mb-3">
                           <video
-                            src={vid.raw_url || vid.hls_url}
+                            src={resolveMediaUrl(vid.raw_url || vid.hls_url)}
                             muted
                             preload="metadata"
                             aria-label={vid.title}

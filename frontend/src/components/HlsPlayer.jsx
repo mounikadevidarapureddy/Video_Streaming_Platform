@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Hls from 'hls.js';
 import { Play, Pause, Volume2, VolumeX, Maximize, Settings, Subtitles, HeartHandshake, Users, Lock, ChevronRight } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { resolveMediaUrl } from '../services/api';
 
 export default function HlsPlayer({ video, chapters = [], subtitles = [], onOpenTip, onOpenWatchParty, onUnlockPpv }) {
   const videoRef = useRef(null);
@@ -26,8 +27,8 @@ export default function HlsPlayer({ video, chapters = [], subtitles = [], onOpen
   useEffect(() => {
     if (!video || !video.hls_url || isLocked) return;
 
-    const mainStreamUrl = video.hls_url;
-    const rawStreamUrl = video.raw_url || mainStreamUrl;
+    const mainStreamUrl = resolveMediaUrl(video.hls_url);
+    const rawStreamUrl = resolveMediaUrl(video.raw_url || mainStreamUrl);
 
     const videoEl = videoRef.current;
     if (!videoEl) return;

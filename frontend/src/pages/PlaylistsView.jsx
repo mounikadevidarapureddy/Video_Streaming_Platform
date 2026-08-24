@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FolderHeart, Plus, Play, Trash2, Film, Check } from 'lucide-react';
+import { resolveMediaUrl } from '../services/api';
 
 export default function PlaylistsView({ videos, onSelectVideo }) {
   const [playlists, setPlaylists] = useState([
@@ -67,7 +68,7 @@ export default function PlaylistsView({ videos, onSelectVideo }) {
                 {pl.videos.map((vid, idx) => (
                   <div key={idx} className="flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
                     <div className="flex items-center gap-3">
-                      <video src={vid.raw_url || vid.hls_url} muted preload="metadata" aria-label={vid.title} className="w-14 h-9 rounded-lg object-cover" />
+                      <video src={resolveMediaUrl(vid.raw_url || vid.hls_url)} muted preload="metadata" aria-label={vid.title} className="w-14 h-9 rounded-lg object-cover" />
                       <div>
                         <h3 className="font-bold text-xs text-white line-clamp-1">{vid.title}</h3>
                         <span className="text-[10px] text-gray-400">{vid.username}</span>
