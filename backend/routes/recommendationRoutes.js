@@ -5,7 +5,7 @@ import { optionalAuthMiddleware } from '../middleware/auth.js';
 const router = express.Router();
 
 // GET COLLABORATIVE FILTERING RECOMMENDATIONS
-router.get('/recommendations', optionalAuthMiddleware, async (req, res) => {
+router.get('/', optionalAuthMiddleware, async (req, res) => {
   try {
     const userId = req.user ? req.user.id : null;
 
