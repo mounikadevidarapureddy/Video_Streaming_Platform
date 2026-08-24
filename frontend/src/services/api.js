@@ -67,5 +67,5 @@ export const api = {
   tipCreator: (tipData) => request('/payments/tip-creator', { method: 'POST', body: tipData }),
 
   // RECOMMENDATIONS
-  getRecommendations: () => request('/recommendations/recommendations')
+  getRecommendations: () => request('/recommendations')
 };
